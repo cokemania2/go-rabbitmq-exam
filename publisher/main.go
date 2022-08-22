@@ -19,20 +19,20 @@ type publishData struct {
 
 func main() {
 	//connect rabbitmq connection
-	AmqpConnectionSet("172.20.20.76")
+	AmqpConnectionSet("127.0.0.1")
 	r := gin.Default()
 	r.GET("/ping", func(c *gin.Context) {
-		PublishTo("mailplug", "", []byte(`{"command":"pong"}`))
+		PublishTo("testName", "", []byte(`{"command":"pong"}`))
 	})
 	r.GET("/publish/:group", func(c *gin.Context) {
 		data, err := json.Marshal(publishData{Command: "publishGroup", Group: c.Param("group")})
 		checkErr(err)
-		PublishTo("mailplug", "", data)
+		PublishTo("testName", "", data)
 	})
 	r.GET("/publish/:group/*topic", func(c *gin.Context) {
 		data, err := json.Marshal(publishData{Command: "publishTopic", Group: c.Param("group"), Topic: strings.Split(c.Param("topic"), "/")[1]})
 		checkErr(err)
-		PublishTo("mailplug", "", data)
+		PublishTo("testName", "", data)
 	})
 	r.Run()
 }

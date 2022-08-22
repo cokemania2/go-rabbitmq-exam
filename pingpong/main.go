@@ -24,7 +24,7 @@ func serveHome(c *gin.Context) {
 func main() {
 
 	flag.Parse()
-	broker.ConnectAMQP("172.20.20.76")
+	broker.ConnectAMQP("127.0.0.1")
 	broker.SocketHub = broker.NewHub()
 	go broker.SocketHub.Run()
 	gin.SetMode(gin.DebugMode)

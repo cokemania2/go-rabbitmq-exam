@@ -77,8 +77,8 @@ func StartConsume() {
 	checkErr(err)
 	AmqpQueue, err = queueDeclare(AmqpChannel, hostName+" test ")
 	checkErr(err)
-	exchangeDeclare(AmqpChannel, "mailplug", "fanout")
-	bindQueue(AmqpChannel, AmqpQueue.Name, "mailplug", "")
+	exchangeDeclare(AmqpChannel, "test", "fanout")
+	bindQueue(AmqpChannel, AmqpQueue.Name, "testName", "")
 	err = AmqpChannel.Qos(0, 0, false)
 	checkErr(err)
 	Deliveries, err = AmqpChannel.Consume(

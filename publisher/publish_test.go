@@ -13,6 +13,6 @@ func TestConnection(t *testing.T) {
 	// if err != nil {
 	// 	log.Fatal("Error loading .env file")
 	// }
-	AmqpConnectionSet("172.20.20.76")
+	AmqpConnectionSet("127.0.0.1")
 	PublishTo("testExchange", "testRoutingKey", []byte(`{"command":"test"}`))
 }
