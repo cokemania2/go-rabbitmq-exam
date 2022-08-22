@@ -8,7 +8,7 @@
 publisher, pingpong 서버 연결
 
 ```sh
-publisher 폴더로 들어가서 go run *.go #localhost:8080
+publisher 폴더로 들어가서 go run main.go #localhost:8080
 pingpong 폴더로 들어가서 go run *.go #localhost:8082
 ```
 
